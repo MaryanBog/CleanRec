@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">CleanRec</string>
+    <string name="status_ready">Готов к захвату экрана</string>
+    <string name="status_recording">Идёт запись • Movies/CleanRec</string>
+    <string name="action_start">СТАРТ</string>
+    <string name="action_stop">СТОП</string>
+    <string name="mic_title">Звук с микрофона</string>
+    <string name="mic_on_desc">Включён (AAC 128 kbps)</string>
+    <string name="mic_off_desc">Без звука</string>
+    <string name="quality_title">Качество видео</string>
+    <string name="tab_record">Запись</string>
+    <string name="tab_gallery">Мои видео</string>
+    <string name="gallery_empty">Записей пока нет</string>
+    <string name="action_play">Смотреть</string>
+    <string name="action_trim">Обрезать</string>
+    <string name="action_share">Поделиться</string>
+    <string name="action_delete">Удалить</string>
+    <string name="badge_trimmed">Обрезано</string>
+    <string name="trim_title">Обрезка видео</string>
+    <string name="trim_cancel">Отмена</string>
+    <string name="trim_save">Сохранить</string>
+    <string name="trim_preview">▶ Предпросмотр</string>
+    <string name="trim_start">Начало</string>
+    <string name="trim_total">Итого</string>
+    <string name="trim_end">Конец</string>
+    <string name="trim_step_minus">-1с</string>
+    <string name="trim_step_plus">+1с</string>
+    <string name="lang_label">RU</string>
+    <string name="guide_title">Как пользоваться</string>
+    <string name="guide_step1_title">1. Начните запись</string>
+    <string name="guide_step1_desc">Нажмите СТАРТ и разрешите захват. У вас есть 5 секунд, чтобы открыть игру.</string>
+    <string name="guide_step2_title">2. Остановите запись</string>
+    <string name="guide_step2_desc">Опустите шторку уведомлений сверху и нажмите «Стоп».</string>
+    <string name="guide_step3_title">3. Обрежьте лишнее</string>
+    <string name="guide_step3_desc">Откройте «Мои видео», нажмите «Обрезать», выберите границы и сохраните.</string>
+    <string name="guide_got_it">Понятно</string>
+
+</resources>

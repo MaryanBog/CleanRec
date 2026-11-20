@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">CleanRec</string>
+    <string name="status_ready">准备录屏</string>
+    <string name="status_recording">正在录制 • Movies/CleanRec</string>
+    <string name="action_start">开始</string>
+    <string name="action_stop">停止</string>
+    <string name="mic_title">麦克风音频</string>
+    <string name="mic_on_desc">已开启 (AAC 128 kbps)</string>
+    <string name="mic_off_desc">已静音</string>
+    <string name="quality_title">视频画质</string>
+    <string name="tab_record">录制</string>
+    <string name="tab_gallery">我的视频</string>
+    <string name="gallery_empty">暂无录制视频</string>
+    <string name="action_play">播放</string>
+    <string name="action_trim">裁剪</string>
+    <string name="action_share">分享</string>
+    <string name="action_delete">删除</string>
+    <string name="badge_trimmed">已裁剪</string>
+    <string name="trim_title">裁剪视频</string>
+    <string name="trim_cancel">取消</string>
+    <string name="trim_save">保存</string>
+    <string name="trim_preview">▶ 预览</string>
+    <string name="trim_start">开始</string>
+    <string name="trim_total">总时长</string>
+    <string name="trim_end">结束</string>
+    <string name="trim_step_minus">-1秒</string>
+    <string name="trim_step_plus">+1秒</string>
+    <string name="lang_label">中文</string>
+    <string name="guide_title">使用指南</string>
+    <string name="guide_step1_title">1. 开始录制</string>
+    <string name="guide_step1_desc">点击“开始”并允许屏幕捕获，你有 5 秒时间切换到游戏或应用。</string>
+    <string name="guide_step2_title">2. 停止录制</string>
+    <string name="guide_step2_desc">下拉顶部通知栏，点击“停止”即可保存视频。</string>
+    <string name="guide_step3_title">3. 裁剪视频</string>
+    <string name="guide_step3_desc">进入“我的视频”，点击“裁剪”，拖动滑块选定片段并保存。</string>
+    <string name="guide_got_it">知道了</string>
+
+</resources>

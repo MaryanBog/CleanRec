@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CleanRec</string>
+    <string name="notif_channel_name">Запись экрана CleanRec</string>
+    <string name="notif_title">CleanRec: Идёт запись экрана</string>
+    <string name="notif_text">Нажмите «Стоп» или коснитесь края экрана, чтобы сохранить</string>
+    <string name="notif_action_stop">Стоп</string>
+</resources>

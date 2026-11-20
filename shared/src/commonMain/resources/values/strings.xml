@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">CleanRec</string>
+    <string name="status_ready">Ready to capture screen</string>
+    <string name="status_recording">Recording • Movies/CleanRec</string>
+    <string name="action_start">START</string>
+    <string name="action_stop">STOP</string>
+    <string name="mic_title">Microphone audio</string>
+    <string name="mic_on_desc">Enabled (AAC 128 kbps)</string>
+    <string name="mic_off_desc">Muted</string>
+    <string name="quality_title">Video quality</string>
+    <string name="tab_record">Record</string>
+    <string name="tab_gallery">Recordings</string>
+    <string name="gallery_empty">No recordings yet</string>
+    <string name="action_play">Play</string>
+    <string name="action_trim">Trim</string>
+    <string name="action_share">Share</string>
+    <string name="action_delete">Delete</string>
+    <string name="badge_trimmed">Trimmed</string>
+    <string name="trim_title">Trim video</string>
+    <string name="trim_cancel">Cancel</string>
+    <string name="trim_save">Save</string>
+    <string name="trim_preview">▶ Preview</string>
+    <string name="trim_start">Start</string>
+    <string name="trim_total">Total</string>
+    <string name="trim_end">End</string>
+    <string name="trim_step_minus">-1s</string>
+    <string name="trim_step_plus">+1s</string>
+    <string name="lang_label">EN</string>
+    <string name="guide_title">How it works</string>
+    <string name="guide_step1_title">1. Start recording</string>
+    <string name="guide_step1_desc">Tap START and allow capture. You have 5 seconds to open your game or app.</string>
+    <string name="guide_step2_title">2. Stop recording</string>
+    <string name="guide_step2_desc">Pull down the notification shade and tap Stop, or return to CleanRec.</string>
+    <string name="guide_step3_title">3. Trim &amp; Share</string>
+    <string name="guide_step3_desc">Open Recordings, tap Trim, set start and end points, and save a clean clip.</string>
+    <string name="guide_got_it">Got it</string>
+</resources>

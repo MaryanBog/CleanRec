@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CleanRec</string>
+    <string name="notif_channel_name">CleanRec Screen Recording</string>
+    <string name="notif_title">CleanRec: Recording screen</string>
+    <string name="notif_text">Tap Stop or touch screen edge to save</string>
+    <string name="notif_action_stop">Stop</string>
+</resources>
