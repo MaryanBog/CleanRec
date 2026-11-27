@@ -1,4 +1,4 @@
-package com.myapplication
+package com.lockrion.cleanrec
 
 import App
 import android.os.Bundle

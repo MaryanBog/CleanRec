@@ -34,5 +34,11 @@
     <string name="guide_step3_title">3. Обрежьте лишнее</string>
     <string name="guide_step3_desc">Откройте «Мои видео», нажмите «Обрезать», выберите границы и сохраните.</string>
     <string name="guide_got_it">Понятно</string>
+    <string name="notif_channel_name">Запись экрана CleanRec</string>
+    <string name="notif_wait_title">CleanRec: Старт через 5 сек...</string>
+    <string name="notif_wait_body">Откройте нужное приложение — запись начнётся автоматически</string>
+    <string name="notif_rec_title">CleanRec: Идёт запись экрана</string>
+    <string name="notif_rec_body">Нажмите «Стоп», чтобы завершить и сохранить видео</string>
+    <string name="notif_action_stop">Стоп</string>
 
 </resources>

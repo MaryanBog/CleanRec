@@ -10,3 +10,17 @@ build/
 iosApp/iosApp.xcworkspace/*
 iosApp/iosApp.xcodeproj/*
 !iosApp/iosApp.xcodeproj/project.pbxproj
+
+cat >> .gitignore << 'EOF'
+
+# Signing keys
+*.jks
+*.keystore
+
+# Build outputs
+*.aab
+*.apk
+
+# Kotlin cache
+.kotlin/
+EOF

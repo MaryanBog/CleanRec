@@ -1,4 +1,4 @@
-package com.myapplication
+package com.lockrion.cleanrec.common
 
 import android.app.Activity
 import android.app.Notification
@@ -59,10 +59,8 @@ class ScreenRecordService : Service() {
                 val quality = intent.getIntExtra(EXTRA_QUALITY, 1080)
 
                 if (resultCode == Activity.RESULT_OK && data != null) {
-                    // 1. Сразу переводим сервис в Foreground, пока приложение ещё активно
                     startForegroundServiceNotification(recordMic, isWaiting = true)
 
-                    // 2. Ждём 5 секунд и запускаем фактическую запись видео
                     delayedStartRunnable?.let { mainHandler.removeCallbacks(it) }
                     delayedStartRunnable = Runnable {
                         startForegroundServiceNotification(recordMic, isWaiting = false)
@@ -81,14 +79,40 @@ class ScreenRecordService : Service() {
         return START_NOT_STICKY
     }
 
+    private fun loadNotifStrings(): Map<String, String> {
+        val lang = Locale.getDefault().language.lowercase()
+        val path = if (lang == "en") "values/strings.xml" else "values-$lang/strings.xml"
+        val stream = javaClass.classLoader?.getResourceAsStream(path)
+            ?: javaClass.classLoader?.getResourceAsStream("values/strings.xml")
+            ?: return emptyMap()
+
+        val xmlText = stream.bufferedReader().use { it.readText() }
+        val regex = Regex("""<string name="([^"]+)">([^<]*)</string>""")
+        return regex.findAll(xmlText).associate { it.groupValues[1] to it.groupValues[2] }
+    }
+
     private fun startForegroundServiceNotification(recordMic: Boolean, isWaiting: Boolean) {
         val channelId = "cleanrec_recording_channel_v2"
         val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val strings = loadNotifStrings()
+
+        val channelName = strings["notif_channel_name"] ?: "CleanRec Screen Recording"
+        val title = if (isWaiting) {
+            strings["notif_wait_title"] ?: "CleanRec: Starting in 5s..."
+        } else {
+            strings["notif_rec_title"] ?: "CleanRec: Recording screen"
+        }
+        val body = if (isWaiting) {
+            strings["notif_wait_body"] ?: "Open your target app — recording will start automatically"
+        } else {
+            strings["notif_rec_body"] ?: "Tap Stop to finish and save the video"
+        }
+        val stopLabel = strings["notif_action_stop"] ?: "Stop"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 channelId,
-                "Запись экрана CleanRec",
+                channelName,
                 NotificationManager.IMPORTANCE_HIGH
             ).apply {
                 setSound(null, null)
@@ -107,18 +131,6 @@ class ScreenRecordService : Service() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val title = if (isWaiting) {
-            "CleanRec: Старт через 5 сек..."
-        } else {
-            "CleanRec: Идёт запись экрана"
-        }
-
-        val body = if (isWaiting) {
-            "Откройте нужное приложение — запись начнётся автоматически"
-        } else {
-            "Нажмите «Стоп», чтобы завершить и сохранить видео"
-        }
-
         val builder = NotificationCompat.Builder(this, channelId)
             .setContentTitle(title)
             .setContentText(body)
@@ -126,7 +138,7 @@ class ScreenRecordService : Service() {
             .setSmallIcon(android.R.drawable.ic_btn_speak_now)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_STATUS)
-            .addAction(android.R.drawable.ic_media_pause, "Стоп", stopPendingIntent)
+            .addAction(android.R.drawable.ic_media_pause, stopLabel, stopPendingIntent)
             .setOngoing(true)
 
         if (!isWaiting) {
@@ -235,13 +247,10 @@ class ScreenRecordService : Service() {
 
         virtualDisplay?.release()
         virtualDisplay = null
-
         mediaProjection?.stop()
         mediaProjection = null
-
         fileDescriptor?.close()
         fileDescriptor = null
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             currentVideoUri?.let { uri ->
                 val values = ContentValues().apply {
@@ -250,15 +259,12 @@ class ScreenRecordService : Service() {
                 contentResolver.update(uri, values, null, null)
             }
         }
-
         _isRecording.value = false
     }
-
     override fun onDestroy() {
         delayedStartRunnable?.let { mainHandler.removeCallbacks(it) }
         super.onDestroy()
     }
-
     companion object {
         const val ACTION_START = "com.cleanrec.app.ACTION_START"
         const val ACTION_STOP = "com.cleanrec.app.ACTION_STOP"

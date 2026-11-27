@@ -1,7 +1,7 @@
 import androidx.compose.runtime.*
 import androidx.compose.ui.text.intl.Locale
+import cleanrec.shared.generated.resources.Res
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.resource
 
 private val StringRegex = Regex("""<string name="([^"]+)">([^<]*)</string>""")
 
@@ -9,11 +9,8 @@ val SUPPORTED_LANGUAGES = listOf("en", "ru", "zh")
 
 fun nextLanguage(current: String): String {
     val idx = SUPPORTED_LANGUAGES.indexOfFirst { it.equals(current, ignoreCase = true) }
-    return if (idx == -1) {
-        SUPPORTED_LANGUAGES.first()
-    } else {
-        SUPPORTED_LANGUAGES[(idx + 1) % SUPPORTED_LANGUAGES.size]
-    }
+    return if (idx == -1) SUPPORTED_LANGUAGES.first()
+    else SUPPORTED_LANGUAGES[(idx + 1) % SUPPORTED_LANGUAGES.size]
 }
 
 @OptIn(ExperimentalResourceApi::class)
@@ -23,16 +20,16 @@ fun rememberAppStrings(selectedLang: String): Map<String, String> {
 
     LaunchedEffect(selectedLang) {
         val code = selectedLang.lowercase().substringBefore("-")
-        val path = if (code == "en") "values/strings.xml" else "values-$code/strings.xml"
+        val path = if (code == "en") "files/values/strings.xml" else "files/values-$code/strings.xml"
 
         val xmlBytes = try {
-            resource(path).readBytes()
-        } catch (e: Exception) {
-            resource("values/strings.xml").readBytes()
+            Res.readBytes(path)
+        } catch (_: Exception) {
+            Res.readBytes("files/values/strings.xml")
         }
         val xmlText = xmlBytes.decodeToString()
         strings = StringRegex.findAll(xmlText).associate { match ->
-            match.groupValues[1] to match.groupValues[2]
+            match.groupValues.get(1) to match.groupValues.get(2)
         }
     }
 

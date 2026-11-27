@@ -34,4 +34,10 @@
     <string name="guide_step3_title">3. Trim &amp; Share</string>
     <string name="guide_step3_desc">Open Recordings, tap Trim, set start and end points, and save a clean clip.</string>
     <string name="guide_got_it">Got it</string>
+    <string name="notif_channel_name">CleanRec Screen Recording</string>
+    <string name="notif_wait_title">CleanRec: Starting in 5s...</string>
+    <string name="notif_wait_body">Open your target app — recording will start automatically</string>
+    <string name="notif_rec_title">CleanRec: Recording screen</string>
+    <string name="notif_rec_body">Tap Stop to finish and save the video</string>
+    <string name="notif_action_stop">Stop</string>
 </resources>

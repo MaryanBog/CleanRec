@@ -65,7 +65,7 @@ fun MainScreen() {
                     )
 
                     CleanRecActionButton(
-                        text = stringRes(strings, "lang_label", currentLang.uppercase()),
+                        text = currentLang.uppercase(),
                         bgColor = CleanRecColors.SurfaceDark,
                         textColor = CleanRecColors.AccentCyan,
                         shape = CleanRecShapes.Button,

@@ -34,5 +34,11 @@
     <string name="guide_step3_title">3. 裁剪视频</string>
     <string name="guide_step3_desc">进入“我的视频”，点击“裁剪”，拖动滑块选定片段并保存。</string>
     <string name="guide_got_it">知道了</string>
+    <string name="notif_channel_name">CleanRec 屏幕录制</string>
+    <string name="notif_wait_title">CleanRec：5秒后开始录制...</string>
+    <string name="notif_wait_body">请打开需要录制的应用，录制将自动开始</string>
+    <string name="notif_rec_title">CleanRec：正在录制屏幕</string>
+    <string name="notif_rec_body">点击“停止”以结束并保存视频</string>
+    <string name="notif_action_stop">停止</string>
 
 </resources>

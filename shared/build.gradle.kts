@@ -1,3 +1,5 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -6,6 +8,7 @@ plugins {
 
 kotlin {
     androidTarget()
+    jvm("desktop")
 
     listOf(
         iosX64(),
@@ -26,6 +29,13 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+            }
+        }
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                implementation("org.bytedeco:javacv:1.5.10")
+                implementation("org.bytedeco:ffmpeg-platform:6.1.1-1.5.10")
             }
         }
         val androidMain by getting {
@@ -49,11 +59,11 @@ kotlin {
 
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
-    namespace = "com.myapplication.common"
+    namespace = "com.lockrion.cleanrec.common"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+    sourceSets["main"].resources.srcDirs("src/commonMain/composeResources")
 
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()
@@ -64,5 +74,31 @@ android {
     }
     kotlin {
         jvmToolchain(17)
+    }
+}
+
+compose.desktop {
+    application {
+        mainClass = "MainKt"
+
+        buildTypes.release.proguard {
+            isEnabled.set(false)
+        }
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Exe)
+            packageName = "CleanRec"
+            packageVersion = "1.0.2"
+            description = "CleanRec Screen Recorder"
+            vendor = "Lockrion Studio"
+
+            windows {
+                menuGroup = "CleanRec"
+                shortcut = true
+                dirChooser = true
+                upgradeUuid = "8f3c2a1b-4e9d-4c8a-9b1e-7d6f5a4c3b2a"
+                iconFile.set(project.file("src/desktopMain/resources/icon.ico"))
+            }
+        }
     }
 }

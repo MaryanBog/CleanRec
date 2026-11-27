@@ -16,7 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
-import com.myapplication.ScreenRecordService
+import com.lockrion.cleanrec.common.ScreenRecordService
 import kotlinx.coroutines.flow.StateFlow
 
 private fun createCaptureIntent(manager: MediaProjectionManager): Intent {
